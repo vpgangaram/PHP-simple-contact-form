@@ -58,12 +58,11 @@ $_SESSION['flash_message'] = 'Contact has been added successfully!';
     ini_set('display_errors', 'On');
     include_once 'db.php';
 
-    $message="contact Added Successfull";
-    if(isset($_SESSION['flash_message_type']) && $_SESSION['flash_message_type']==='success'){
-        echo "<script >alert('$message');</script>";
-        unset($_SESSION['flash_message']);
-    }
-    
+        $message="Command Successfull Exicuted!";
+        if(isset($_SESSION['flash_message_type']) && $_SESSION['flash_message_type']==='success'){
+            echo "<script >alert('$message');</script>";
+            unset($_SESSION['flash_message']);
+        }
     
       
     if(isset($_POST["submit"])){
@@ -121,14 +120,15 @@ $_SESSION['flash_message'] = 'Contact has been added successfully!';
                     <td><?php echo $data['addres']; ?> </td>
                     <td><?php echo $data['selectOption']; ?> </td>
                     <td><?php echo $data['comment']; ?> </td>
-                    <td><a href="delete.php?id=<?php echo $data["id"]; ?>"><button class='btn btn-outline-danger'>Delete</button></a></td>
+                    <td><a href="delete.php?id=<?php echo $data["id"]; ?>"><button onclick='del()' class='btn btn-outline-danger'>Delete</button></a></td>
                 <tr>
                 <?php
                 $sn++;}} else { ?>
                     <tr>
                     <td colspan="8">No data found</td>
                     </tr>
-                <?php } 
+                <?php }
+                
                 
                 
                 ?>

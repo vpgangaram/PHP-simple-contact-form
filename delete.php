@@ -25,11 +25,14 @@
     }
     mysqli_close($conn);
 
-    $message="Deleted Successfully!";
+    $message="Command Successfully Exicuted!";
     if(isset($_SESSION['flash_message_type']) && $_SESSION['flash_message_type']==='success'){
         echo "<script >alert('$message');</script>";
         unset($_SESSION['flash_message']);
     }
+
+
+    header('Location: first.php'); 
     ?>
 
 

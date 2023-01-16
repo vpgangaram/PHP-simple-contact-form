@@ -25,7 +25,8 @@
       margin: 10px auto;
       padding: 10px 20px;
       background: #f4f7f8;
-      border-radius: 8px;
+      border-radius: 10px;
+      color:#000000;
     }
 
     h1 {
@@ -34,15 +35,7 @@
     }
 
     input[type="text"],
-    input[type="password"],
-    input[type="date"],
-    input[type="datetime"],
     input[type="email"],
-    input[type="number"],
-    input[type="search"],
-    input[type="tel"],
-    input[type="time"],
-    input[type="url"],
     textarea,
     select {
       background: rgba(255,255,255,0.1);
@@ -54,7 +47,7 @@
       padding: 15px;
       width: 100%;
       background-color: #e8eeef;
-      color: #8a97a0;
+      color: #202020;
       box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
       margin-bottom: 30px;
     }
@@ -141,12 +134,13 @@
         <label for="email">Email:</label>
         <input type="email" id="mail" name="email">
           
-        <label for="bio">Address:</label>
-        <textarea id="bio" name="address" placeholder="1234 Main St"></textarea>
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" placeholder="1234 Main St"></textarea>
 
-        <label for="job">Select</label>
-        <select id="job" name='select' required>
-          <option selected value=''>Choose An Option</option>
+        <label for="select">Select</label>
+        <select id="select" name='select' required>
+          <option selected value='' style="
+      font-color:#202020;">Choose An Option</option>
           <option value='Query'>Query</option>
           <option value='Feedback'>Feedback</option>
           <option value='Complaint'>Complaint</option>
@@ -158,11 +152,19 @@
         
       </fieldset>
         <br>
-        <button type="submit" name='submit' class="btn btn-primary">SUBMIT</button>
+        <button onclick="added()" type="submit" name='submit' class="btn btn-primary">SUBMIT</button>
       </form>
 
   
-
+    <?php
+      function added(){
+          $message="contact Added Successfull";
+        if(isset($_SESSION['flash_message_type']) && $_SESSION['flash_message_type']==='success'){
+          echo "<script >alert('$message');</script>";
+          unset($_SESSION['flash_message']);
+        }
+      }
+    ?>
   <script>
   if ( window.history.replaceState ) {
     window.history.replaceState( null, null, window.location.href );
